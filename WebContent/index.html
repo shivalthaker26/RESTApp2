@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="reservationApp">
+<head>
+    <title>Welcome to Smokin' Hot!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+<div ng-controller="HomeCtrl" ng-include="'views/nav_bar.html'"></div>
+<ng-view></ng-view>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.4.4/angular-route.js"></script>
+
+<script src="https://code.angularjs.org/1.4.4/angular-messages.js"></script>
+<script src="static/js/ui-bootstrap-tpls-0.13.3.min.js"></script>
+<script src="static/js/datetime-picker.min.js"></script>
+<script src="https://code.angularjs.org/1.4.4/angular-animate.min.js"></script>
+
+<script src="scripts/app.js"></script>
+<script src="scripts/services/service1.js"></script>
+<script src="scripts/controllers/homeCtrl.js"></script>
+<script src="scripts/controllers/createReservationCtrl.js"></script>
+<script src="scripts/controllers/manageReservationCtrl.js"></script>
+<script src="scripts/controllers/editReservationCtrl.js"></script>
+<script src="scripts/controllers/modalInstanceCtrl.js"></script>
+
+</body>
+</html>
