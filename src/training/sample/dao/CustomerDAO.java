@@ -162,6 +162,48 @@ public Customer addCustomer(Customer cust) throws AppException {
 
 }
 
+public Customer updateCustomer(Customer cust) throws AppException {
+	
+	
+	Connection con = CUSTUtil.connectToDB();
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	try {
+		ps = con.prepareStatement("UPDATE customer SET FIRST_NAME = ?, LAST_NAME = ?,PH_PREFIX=?, PHONE=?, EMAIL=?, RESERV_DATE=?, NO_OF_GUESTS=?, VISIT=?, REQUEST=?, NOTIFICATIONS=? WHERE CONFIRM_NUM=?");
+		
+		
+		ps.setString(1, cust.getFirst_name());
+		ps.setString(2, cust.getLast_name());
+		ps.setString(3, cust.getPhone_prefix());
+		ps.setString(4, cust.getPhone_number());
+		ps.setString(5, cust.getEmail());
+		ps.setInt(6, cust.getDate());
+		ps.setInt(7, cust.getNo_of_guests());
+		ps.setString(8, cust.getVisit());
+		ps.setString(9,cust.getVisit());
+		ps.setString(10, cust.getNotifications());
+		ps.setString(11,cust.getConfirmationNumber());
+		
+		ps.executeUpdate();
+
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+		throw new AppException("Error in fetching records from Database", e.getCause());
+		
+	}
+	finally
+	{
+		CUSTUtil.closeResources (ps, rs, con);
+	}
+	
+	
+	return cust;
+	
+
+
+}
+
 
 
 

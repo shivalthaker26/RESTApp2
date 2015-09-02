@@ -92,5 +92,30 @@ public class CustomerController
    }
    
    
+   @POST
+   @Path("/update")
+   @Consumes(MediaType.APPLICATION_JSON)
+   @Produces(MediaType.APPLICATION_JSON)
+   public AppResponse updateCustomer(Customer cust)
+   {
+	   AppResponse resp = new AppResponse();
+		
+		try
+		{
+		CustomerDAO dao = new CustomerDAO();
+		cust = dao.updateCustomer(cust);
+		resp.setMessage("Customer has been updated into the database");
+		resp.setPayload(cust);
+		}
+		catch(AppException e)
+		{
+			e.printStackTrace();
+			resp.setStatus(AppResponse.ERROR);			
+			resp.setMessage(e.getMessage());
+		}
+		return resp;
+   }
+   
+   
    
 }

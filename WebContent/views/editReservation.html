@@ -8,7 +8,7 @@
 				<h3 class="text-center font-feature"> Please Enter your details below:</h3>
 			</div>
 			<div class="panel-body">
-				<form name="userForm" data-ng-submit="addCust()"  novalidate>
+				<form name="userForm" data-ng-submit="updateCust()"  novalidate>
 					<div class="row padding-top-10">
 						<div class="col-md-6">
 							<div class="form-group"  ng-class="{ 'has-error' : userForm.first_name.$invalid && !userForm.first_name.$pristine }">
@@ -106,3 +106,40 @@
 		</div>
 	</div>
 </div>
+<script type="text/ng-template" id="myModalContent.html">
+		<div class="modal-header font-feature">
+			<h3 class="modal-title text-center">Your Reservation Details!</h3>
+		</div>
+		<div class="modal-body font-feature">
+			<form class="form-horizontal">
+				<div class="form-group">
+      				<label class="col-sm-3 control-label">Confirmation Number</label>
+      				<div class="col-sm-9">
+        				<p class="form-control-static">{{confirmationsDetails.confirmationNumber}}</p>
+      				</div>
+    			</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Name</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">{{confirmationsDetails.first_name}}&nbsp;{{confirmationsDetails.last_name}}</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Reservation Date & Time</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">{{confirmationsDetails.date | date:'medium'}}</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">No of Guests</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">{{confirmationsDetails.no_of_guests}}</p>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer font-feature">
+			<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+			<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+		</div>
+</script>

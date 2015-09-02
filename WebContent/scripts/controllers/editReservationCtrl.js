@@ -63,6 +63,45 @@ reservationAppCtrls
 
 
 
+        $scope.updateCust = function()
+        {
+
+
+        	$scope.getDate = new Date($scope.user.date);
+
+        	
+        	$scope.user.date = $scope.getDate.getTime()/1000;
+
+            $scope.confirmationsDetails = {};
+
+            $scope.openConfirmationModal = function(size, response)
+            {
+                var modalInstance = $modal.open({
+                    animation: true,
+                    templateUrl: 'myModalContent.html',
+                    controller: 'ConfirmationDetailModal',
+                    size: size,
+                    resolve: {
+                        confirmationDetails: function () {
+                            return response;
+                        }
+                    }
+                })
+            };
+        	$http({
+        		method:'POST',
+        	    url:'api/customer/update',
+        	    data:$scope.user
+        	}).success(function(response)
+        	{
+                $scope.openConfirmationModal('lg',response.payload);
+                $scope.user = '';
+
+            }).error(function(error)
+        	{
+        		console.log(error);
+        	})
+        }
 
 
 
