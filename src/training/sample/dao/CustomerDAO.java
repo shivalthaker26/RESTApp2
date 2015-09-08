@@ -204,6 +204,39 @@ public Customer updateCustomer(Customer cust) throws AppException {
 
 }
 
+public Customer deleteCustomer(String confirmationNumber) throws AppException {
+	
+	Customer cust = new Customer();
+	Connection con = CUSTUtil.connectToDB();
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	try {
+		ps = con.prepareStatement("DELETE FROM customer  WHERE CONFIRM_NUM=?");
+		
+		
+		
+		ps.setString(1,confirmationNumber);
+		
+		ps.executeUpdate();
+
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+		throw new AppException("Error in fetching records from Database", e.getCause());
+		
+	}
+	finally
+	{
+		CUSTUtil.closeResources (ps, rs, con);
+	}
+	
+	
+	return cust;
+	
+
+
+}
+
 
 
 

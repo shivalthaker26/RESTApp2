@@ -116,6 +116,30 @@ public class CustomerController
 		return resp;
    }
    
+   @GET
+   @Path("/delete/{confirmationNumber}")
+   @Consumes(MediaType.APPLICATION_JSON)
+   @Produces(MediaType.APPLICATION_JSON)
+   public AppResponse deleteCustomer(@PathParam("confirmationNumber") String confirmationNumber)
+   {
+	   AppResponse resp = new AppResponse();
+		
+		try
+		{
+		CustomerDAO dao = new CustomerDAO();
+		Customer cust = dao.deleteCustomer(confirmationNumber);
+		resp.setMessage("Customer has been deleted from the database");
+		resp.setPayload(cust);
+		}
+		catch(AppException e)
+		{
+			e.printStackTrace();
+			resp.setStatus(AppResponse.ERROR);			
+			resp.setMessage(e.getMessage());
+		}
+		return resp;
+   }
+   
    
    
 }

@@ -19,6 +19,7 @@
 				<th>No of Guests</th>
 				<th>Special Requests</th>
 				<th></th>
+				<th></th>
 			</tr>
 			</thead>
 			<tbody>
@@ -30,6 +31,7 @@
 				<td>{{r.no_of_guests}}</td>
 				<td>{{r.specialRequests}}</td>
 				<td><a ng-click="editReservation(r.confirmationNumber)">Edit Reservation</td>
+				<td><a ng-click="deleteReservation(r.confirmationNumber)">Delete Reservation</td>
 			</tr>
 			</tbody>
 		</table>

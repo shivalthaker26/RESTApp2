@@ -71,5 +71,21 @@ reservationAppCtrls
         $scope.editReservation = function(reservation_number){
             $location.path('/editReservation/'+reservation_number);
         }
+        
+        $scope.deleteReservation = function(confirmationNumber)
+        {
+        	$http({
+        		method:'GET',
+        	    url:'api/customer/delete/' + confirmationNumber
+        	}).success(function(response)
+        	{
+               $scope.getReservation();
+               console.log("customer is deleted from database");
+
+            }).error(function(error)
+        	{
+        		console.log(error);
+        	})
+        }
 
     }]);
